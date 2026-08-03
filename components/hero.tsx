@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react"
 
 import { CatImage } from "@/components/cat-image"
+import { HeroBackground } from "@/components/hero-background"
 import site from "@/data/site.json"
 
 const { hero } = site
@@ -11,6 +12,9 @@ const { hero } = site
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
+      {/* interactive line-sphere backdrop */}
+      <HeroBackground />
+
       {/* soft warm ambient glow */}
       <div
         aria-hidden
@@ -96,14 +100,15 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="relative"
           >
-            <div className="animate-float-slow overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm">
+            <div className="animate-float-slow relative h-[360px] w-[360px] overflow-hidden md:h-[500px] md:w-[500px]">
               <CatImage
-                variant="hero"
-                alt="Лео Supportovich — кот-эксперт технической поддержки CatOps"
+                variant="heroCoach"
+                alt="Кот-коуч CatOps в деловом костюме"
                 priority
-                width={560}
-                height={560}
-                className="relative h-auto w-[280px] md:w-[380px]"
+                width={720}
+                height={720}
+                className="h-full w-full scale-[1.62] object-cover [mask-image:radial-gradient(ellipse_58%_64%_at_50%_49%,#000_32%,transparent_76%)]"
+                style={{ objectPosition: "50% 52%" }}
               />
             </div>
 

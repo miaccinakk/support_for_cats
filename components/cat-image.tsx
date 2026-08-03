@@ -7,6 +7,8 @@ import Image from "next/image"
 export const CAT_IMAGES = {
   hero: "/images/cat-hero.png",
   coach: "/images/cat-coach.png",
+  heroCoach: "/images/cat-coach-suit.png",
+  notepad: "/images/cat-notepad.png",
 } as const
 
 type CatImageProps = {
@@ -16,9 +18,10 @@ type CatImageProps = {
   priority?: boolean
   width?: number
   height?: number
+  style?: React.CSSProperties
 }
 
-export function CatImage({ variant, alt, className, priority, width = 640, height = 640 }: CatImageProps) {
+export function CatImage({ variant, alt, className, priority, width = 640, height = 640, style }: CatImageProps) {
   return (
     <Image
       src={CAT_IMAGES[variant] || "/placeholder.svg"}
@@ -27,6 +30,7 @@ export function CatImage({ variant, alt, className, priority, width = 640, heigh
       height={height}
       priority={priority}
       className={className}
+      style={style}
     />
   )
 }
