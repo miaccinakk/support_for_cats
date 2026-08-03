@@ -100,15 +100,14 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="relative"
           >
-            <div className="animate-float-slow relative h-[360px] w-[360px] overflow-hidden md:h-[500px] md:w-[500px]">
+            <div className="animate-float-slow relative h-[340px] w-[340px] md:h-[500px] md:w-[500px]">
               <CatImage
                 variant="heroCoach"
                 alt="Кот-коуч CatOps в деловом костюме"
                 priority
                 width={720}
                 height={720}
-                className="h-full w-full scale-[1.62] object-cover [mask-image:radial-gradient(ellipse_58%_64%_at_50%_49%,#000_32%,transparent_76%)]"
-                style={{ objectPosition: "50% 52%" }}
+                className="h-full w-full object-contain"
               />
             </div>
 
@@ -121,9 +120,13 @@ export function Hero() {
                 transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
                 className={[
                   "absolute flex items-center gap-2 rounded-xl border border-border bg-card/95 px-3 py-2 shadow-sm backdrop-blur",
-                  i === 0 ? "left-[-8px] top-6 md:left-[-24px]" : "",
-                  i === 1 ? "right-[-8px] top-1/3 md:right-[-28px]" : "",
-                  i === 2 ? "-bottom-4 left-8 md:-bottom-5 md:left-12" : "",
+                  // On mobile the cards float around the lower body / edges so they
+                  // never overlap the cat's face; desktop keeps the original layout.
+                  i === 0 ? "bottom-16 left-[-4px] md:bottom-auto md:top-6 md:left-[-24px]" : "",
+                  i === 1 ? "bottom-16 right-[-4px] md:bottom-auto md:top-1/3 md:right-[-28px]" : "",
+                  i === 2
+                    ? "-bottom-3 left-1/2 -translate-x-1/2 md:-bottom-5 md:left-12 md:translate-x-0"
+                    : "",
                 ].join(" ")}
               >
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
